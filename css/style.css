@@ -31,7 +31,7 @@ a.top-nav-link:hover {
 }
 
 p {
-  font-size: 19px;
+  font-size: 18px;
   letter-spacing: 1px;
   word-spacing: 3px;
   line-height: 28px;
@@ -120,7 +120,7 @@ a:focus {
 /*header section*/
 .hero_area {
   position: relative;
-  background-image: url(../images/hero-image.webp);
+  background-image: url(../images/bg2.jpg);
   background-color: #20447a;
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -474,7 +474,7 @@ a:focus {
 }
 
 .professional_section {
-  background-image: url(../images/hero-image.webp);
+  background-image: url(../images/bg2.jpg);
   background-color: #20447a;
   background-position: right bottom;
   background-repeat: no-repeat;
