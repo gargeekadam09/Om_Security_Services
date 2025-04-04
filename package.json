@@ -2,13 +2,14 @@
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.13.1",
+    "mongoose": "^8.13.2",
     "nodemailer": "^6.10.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/mongoose": "^5.11.96",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19.1.0"
   }
