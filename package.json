@@ -8,6 +8,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19.1.0"
   }
