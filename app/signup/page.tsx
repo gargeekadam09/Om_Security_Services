@@ -1,26 +1,88 @@
-import {connect} from '@/dbConfig/dbConfig'
-import User from '@/models/userModel'
-import {NextRequest , NextResponse } from 'next/server'
+import React, { use, useEffect, useState } from "react";
+import axios from "axios";
+import {toast} from "react-hot-toast"
+import {useRouter} from 'next/navigation'
+export default function SignupPage(){
 
-connect()
 
-export async function POST (request: NextRequest) {
-    try {
-        const reqBody = request.json()
-        const {username, email , password } = reqBody
-        //validation 
+    const router = useRouter 
+    const [user,setUser] = useState({
+        email:"",
+        password:"",
+        username:""
+    })
 
-        console.log(reqBody);
+    const [buttonDisabled, setButtonDisabled] = useState
+    (false)
+    const[loading , setLoading] = useState(false)
 
-        const user = await User.findOne({email})
+    const onSignup = async() => {
+        try {
+          setLoading(true) 
+          const response = await axios.post("/app/users/signup", user);
+          console.log("Signup Success",response.data);
+          router.push('/login')
 
-        if(user){
-            request NextResponse.json ({ error : "User already 
-                exists"} ,{status : 400}
-            }
-            })
-    } catch (error: any) {
-        return NextResponse.json({error : error.message},
-            {status:500})
+        } catch (error:any) {
+          console.log("Signup Failed");
+          toast.error(error.message)
+
+        }
     }
+
+    useEffect(()=> {
+        if (user.email.length > 0 && user.password.length >
+            0 && user.username.length > 0){
+                setButtonDisabled(false)
+            }else{
+                setButtonDisabled(true)
+            }
+    } ,[user])
+    return( 
+      <div className='flex flex-col items-center 
+      justify-center min-h-screen py-2' >
+        <h1> {loading ? "Processing " : "Signup" }</h1>
+        <hr/>
+        <label htmlFor="username">username</label>
+        <input
+        id='username'
+        value={user.username}
+        onChange={(e) => setUser({...user,username: e.
+            target.value})}
+
+        placeholder= "username"
+        type="text"/>
+
+
+        <label htmlFor="email">email</label>
+        <input
+        id='email'
+        value={user.email}
+        onChange={(e) => setUser({...user,email: e.
+            target.value})}
+
+        placeholder= "email"
+        type="text"/>
+
+
+        <label htmlFor="password">password</label>
+        <input
+        id='password'
+        value={user.password}
+        onChange={(e) => setUser({...user,password: e.
+            target.value})}
+
+        placeholder= "password"
+        type="text"/>
+
+        <button
+        onClick = {onSignup}
+        className=''
+        >
+        {buttonDisabled ? "No Signup" : " Signup"}       
+        </button>
+        <Link href = "/login"> Visit Login</Link>
+      </div>
+
+    )
 }
