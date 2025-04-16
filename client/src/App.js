@@ -112,7 +112,7 @@ function App() {
     <div className="app-container">
       <header>
         <div className="header-top">
-          <h1>PageTurner Bookstore</h1>
+          <h1>Om Security Services</h1>
           <div className="user-info">
             <span>Welcome, {user.name || user.username}</span>
             <button onClick={handleLogout} className="logout-btn">Logout</button>
