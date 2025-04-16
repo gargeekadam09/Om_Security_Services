@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllServices } from '../services/serviceService';
 
-
+// Fallback image map if needed (you can customize this)
 const serviceCovers = {
   "Residential Security Guard Services": "residential.jpg",
   "Event Security Management": "event.jpg",
