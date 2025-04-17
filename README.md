@@ -94,6 +94,8 @@ Language Support	- TypeScript (partial setup)
 | *Package* | Manager npm |
 | *Version Control* | Git |
 | *SQL* | Backend  (Auth, DB, Storage, Functions) |
+
+
 Citations & References
 https://www.alliedmarketresearch.com/private-security-services-market
 https://www.securitymagazine.com/articles/99310-digital-transformation-in-the-security-industry
