@@ -4,8 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "react-scripts build",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
