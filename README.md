@@ -1,8 +1,8 @@
-Overview
+**Overview**
 The OM Security Services website is a  designed to showcase and promote a private security company's range of services. Its primary objective is to provide a centralized digital presence where potential clients can explore the company's offerings, understand its expertise, and easily get in touch for inquiries or service bookings. The website highlights core is it’s website which includes four main services which are Residential Security Guard Services, Event Security Management, Commercial Security Solutions and Personal Bodyguard Services. This website is designed to provide clients with a seamless and hassle-free way to hire professional security services and personnel online. It simplifies the entire process from exploring available services to making direct bookings ensuring convenience, transparency, and efficiency at every step 
 
 
-Business Requirements
+**Business Requirements**
 
 1. User Registration & Authentication
 •	Clients must be able to register and log in securely.
@@ -27,7 +27,8 @@ Business Requirements
 •	Every booking must be logged as a sale.
 •	Sales data should be accessible to admins for analysis.
 
-Key Features Of The OM Security Services
+**Key Features Of The OM Security Services**
+
 •	Multi-Page Frontend: Includes key service-related pages such as:
 o	Home
 o	About
@@ -41,9 +42,10 @@ o	Team
 •	Static Assets: Professionally themed images and icons to support branding.
 
 
- Workflow of the OM Security Services Website
- 
+##Workflow of the OM Security Services Website
+
 The OM Security Services website is structured to deliver a seamless user experience for clients looking to hire security personnel online. The workflow is divided into several interconnected stages that represent how users interact with the platform and how data flows through the system.
+
 1. User Access and Navigation
 •	When a user visits the homepage, they are presented with an intuitive navigation system.
 •	Users can explore various services such as:
@@ -75,15 +77,23 @@ o	Pricing updates
 •	The app can be deployed on platforms like Vercel, Netlify, or GitHub Pages.
 •	Build scripts (npm run build) are used to generate the production-ready files from the development source.
 
-Technologies Used In the Application
-Purpose	Technology
-Frontend Framework	React (CRA)
-Styling	Tailwind CSS
-Package Manager	npm
-Hosting	Vercel
-Version Control	Git
-Language Support	TypeScript (partial setup)
+**Technologies Used In the Application**
+Purpose	 Technology
+Frontend  - Framework	React (CRA)
+Styling	 - Tailwind CSS
+Package - Manager	npm
+Hosting -	Vercel
+Version Control	- Git
+Language Support	- TypeScript (partial setup)
 
+| Technology   | Description |
+|--------------|-------------|
+| Framework	React (CRA) | Frontend |
+| *TypeScript* | Ensures type safety |
+| *TailwindCSS* | Utility-first CSS for fast styling |
+| *Package* | Manager npm |
+| *Version Control* | Git |
+| *SQL* | Backend  (Auth, DB, Storage, Functions) |
 Citations & References
 https://www.alliedmarketresearch.com/private-security-services-market
 https://www.securitymagazine.com/articles/99310-digital-transformation-in-the-security-industry
