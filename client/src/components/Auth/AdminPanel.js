@@ -2,7 +2,6 @@ import React from 'react';
 
 const AdminPanel = () => {
   const handleAdminAccess = () => {
-    // Create admin user data directly
     const adminUser = {
       id: 999,
       username: 'admin',
@@ -12,15 +11,9 @@ const AdminPanel = () => {
       customerId: null
     };
     
-    // Create a mock token (this is just for demonstration)
     const token = 'admin-direct-access-token';
-    
-    // Store in localStorage just like regular login
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(adminUser));
-    
-    // Reload the page to apply changes
-    window.location.reload();
   };
 
   return (
