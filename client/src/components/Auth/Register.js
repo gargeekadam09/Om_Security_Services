@@ -51,8 +51,7 @@ const Register = ({ onRegisterSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate form
+
     const validationErrors = validateForm();
     if (validationErrors) {
       setError('Please correct the form errors');
@@ -75,7 +74,7 @@ const Register = ({ onRegisterSuccess }) => {
         address: ''
       });
       
-      // Call the callback if provided
+
       if (onRegisterSuccess) {
         onRegisterSuccess();
       }
