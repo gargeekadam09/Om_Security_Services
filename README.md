@@ -1,3 +1,6 @@
+[Deployed Link](https://client-rust-phi.vercel.app/)
+
+
 **Overview**
 The OM Security Services website is a  designed to showcase and promote a private security company's range of services. Its primary objective is to provide a centralized digital presence where potential clients can explore the company's offerings, understand its expertise, and easily get in touch for inquiries or service bookings. The website highlights core is it’s website which includes four main services which are Residential Security Guard Services, Event Security Management, Commercial Security Solutions and Personal Bodyguard Services. This website is designed to provide clients with a seamless and hassle-free way to hire professional security services and personnel online. It simplifies the entire process from exploring available services to making direct bookings ensuring convenience, transparency, and efficiency at every step 
 
