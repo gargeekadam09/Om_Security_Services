@@ -21,7 +21,6 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Basic validation
     if (!formData.username || !formData.password) {
       setError('Username and password are required');
       return;
@@ -32,8 +31,6 @@ const Login = ({ onLogin }) => {
       setError(null);
       
       const data = await loginUser(formData);
-      
-      // Call the onLogin callback to update app state
       if (onLogin) {
         onLogin(data.user);
       }
