@@ -11,8 +11,6 @@ The website features four major service categories:
 - Commercial Security Solutions  
 - Personal Bodyguard Services  
 
-This platform enables clients to **hire professional security services online** with ease, offering **convenience, transparency, and efficiency** throughout the process.
-
 ---
 
 ##  Business Requirements
@@ -53,9 +51,8 @@ This platform enables clients to **hire professional security services online** 
   - Team
 
 - **Reusable Components**: Navbar, Footer, Hero, ServiceCards, etc.  
-- **Styling**: Tailwind CSS for clean, responsive design  
+- **Styling**: CSS for clean, responsive design  
 - **Mobile-First**: Fully responsive layout  
-- **Media Assets**: Professional images and icons supporting brand identity
 
 ---
 
