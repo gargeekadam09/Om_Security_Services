@@ -26,15 +26,12 @@ function App() {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        // Check localStorage first
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
           setUser(JSON.parse(storedUser));
           setLoading(false);
           return;
         }
-        
-        // If not in localStorage, try API
         const userData = await getCurrentUser();
         setUser(userData);
       } catch (error) {
@@ -47,10 +44,6 @@ function App() {
 
     fetchUser();
   }, []);
-
-  const refreshList = () => {
-    setRefreshData(prev => prev + 1);
-  };
 
   const handleAddNew = () => {
     if (activeTab === 'books') {
@@ -83,15 +76,6 @@ function App() {
     setActiveTab('books');
   };
 
-  const toggleAdminPanel = () => {
-    setShowAdminPanel(prev => !prev);
-  };
-
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
-
-  // If not logged in, show the auth page
   if (!user) {
     return (
       <div>
@@ -126,8 +110,7 @@ function App() {
       </header>
 
       <main>
-        {/* Books Section - Visible to all but with restricted actions */}
-        {activeTab === 'books' && (
+        {activeTab === 'services' && (
           <div className="section">
             <div className="left-panel">
               <BookList 
@@ -140,7 +123,7 @@ function App() {
             {adminOptions && (
               <div className="right-panel">
                 <BookForm 
-                  book={selectedBook} 
+                  service={selectedService} 
                   onSave={refreshList} 
                 />
               </div>
@@ -148,15 +131,12 @@ function App() {
           </div>
         )}
 
-        {/* Customer Dashboard - For regular customers */}
+  
         {activeTab === 'dashboard' && !adminOptions && (
           <CustomerDashboard user={user} />
         )}
-
-        {/* Admin Only Sections */}
         {adminOptions && (
           <>
-            {/* Customers Section */}
             {activeTab === 'customers' && (
               <div className="section">
                 <div className="left-panel">
@@ -175,7 +155,6 @@ function App() {
               </div>
             )}
 
-            {/* Sales Section */}
             {activeTab === 'sales' && (
               <div className="section">
                 <div className="left-panel">

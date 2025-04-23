@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { createService, updateService } from '../../services/serviceService';
-
-const ServiceForm = ({ service, onSave }) => {
-  const [{"title": " Services", "description": "Professional guards to protect homes and residential communities.", "price": 200, "image": "residential.jpg"}, {"title": "Event Security Management", "description": "Secure and manage small to large-scale events with expert personnel.", "price": 500, "image": "event.jpg"}, {"title": "Commercial Security Solutions", "description": "Tailored security for businesses, offices, and corporate premises.", "price": 350, "image": "commercial.jpg"}, {"title": "Personal Bodyguard Services", "description": "Trained bodyguards for personal protection and VIP escort.", "price": 800, "image": "bodyguard.jpg"}]formData, setFormData] = useState({
-    title: '',
-    author: '',
-    isbn: '',
-    price: '',
-    stock: ''
-  });
   
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState(null);
@@ -16,7 +7,6 @@ const ServiceForm = ({ service, onSave }) => {
 
   useEffect(() => {
     if (service) {
-      // Convert price to string for the form input if it's not already
       const priceValue = typeof service.price === 'number' 
         ? service.price.toString() 
         : service.price;
@@ -29,7 +19,7 @@ const ServiceForm = ({ service, onSave }) => {
         stock: service.stock
       });
     } else {
-      // Reset form if no service is selected
+
       setFormData({
         title: '',
         author: '',
@@ -38,8 +28,7 @@ const ServiceForm = ({ service, onSave }) => {
         stock: ''
       });
     }
-    
-    // Clear messages when service changes
+ 
     setMessage(null);
     setErrors({});
   }, [service]);
@@ -101,15 +90,11 @@ const ServiceForm = ({ service, onSave }) => {
       };
       
       if (service) {
-        // Update existing service
         await updateService(service.id, serviceData);
         setMessage({ type: 'success', text: 'Service updated successfully!' });
       } else {
-        // Create new service
         await createService(serviceData);
         setMessage({ type: 'success', text: 'Service created successfully!' });
-        
-        // Reset form after successful creation
         setFormData({
           title: '',
           author: '',
@@ -118,8 +103,7 @@ const ServiceForm = ({ service, onSave }) => {
           stock: ''
         });
       }
-      
-      // Notify parent component to refresh the list
+
       if (onSave) {
         onSave();
       }
