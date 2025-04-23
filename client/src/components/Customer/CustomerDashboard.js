@@ -10,11 +10,9 @@ const CustomerDashboard = ({ user }) => {
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   
-  // Purchase form state
   const [selectedService, setSelectedService] = useState('');
   const [quantity, setQuantity] = useState(1);
 
-  // Helper function to safely format price
   const formatPrice = (price) => {
     const numPrice = typeof price === 'string' ? parseFloat(price) : price;
     return isNaN(numPrice) ? '0.00' : numPrice.toFixed(2);
@@ -27,7 +25,6 @@ const CustomerDashboard = ({ user }) => {
         setLoading(true);
         setError(null);
         
-        // First, get all available services
         const servicesData = await getAllServices();
         console.log("Services fetched:", servicesData);
         setServices(servicesData);
@@ -35,8 +32,7 @@ const CustomerDashboard = ({ user }) => {
         if (servicesData.length > 0) {
           setSelectedService(servicesData[0].id);
         }
-        
-        // Then try to get customer purchases
+      
         try {
           const purchasesData = await getCustomerSales();
           console.log("Purchases fetched:", purchasesData);
@@ -44,7 +40,7 @@ const CustomerDashboard = ({ user }) => {
         } catch (purchaseErr) {
           console.error("Error fetching purchases:", purchaseErr);
           setPurchases([]);
-          // Don't set error for purchase fetch failure, show empty state instead
+
         }
         
         setLoading(false);
@@ -75,21 +71,18 @@ const CustomerDashboard = ({ user }) => {
       const saleData = {
         service_id: parseInt(selectedService),
         quantity: parseInt(quantity)
-        // No need to include customer_id, the backend will use it from the token
       };
       
       console.log("Submitting purchase:", saleData);
       await createSale(saleData);
       
-      // Refresh purchases
       try {
         const purchasesData = await getCustomerSales();
         setPurchases(purchasesData);
       } catch (err) {
         console.error("Error refreshing purchases:", err);
       }
-      
-      // Reset form
+ 
       setQuantity(1);
       
       setMessage({

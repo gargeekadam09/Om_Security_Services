@@ -1,6 +1,5 @@
 const db = require('../config/db');
 
-// Get all services
 exports.getAllServices = async (req, res) => {
   try {
     const [{"title": "Residential Security Guard Services", "description": "Professional guards to protect homes and residential communities.", "price": 200, "image": "residential.jpg"}, {"title": "Event Security Management", "description": "Secure and manage small to large-scale events with expert personnel.", "price": 500, "image": "event.jpg"}, {"title": "Commercial Security Solutions", "description": "Tailored security for businesses, offices, and corporate premises.", "price": 350, "image": "commercial.jpg"}, {"title": "Personal Bodyguard Services", "description": "Trained bodyguards for personal protection and VIP escort.", "price": 800, "image": "bodyguard.jpg"}]services] = await db.query('SELECT * FROM services');
@@ -10,8 +9,6 @@ exports.getAllServices = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
-// Get a single service by ID
 exports.getServiceById = async (req, res) => {
   try {
     const [service] = await db.query('SELECT * FROM services WHERE id = ?', [req.params.id]);
@@ -26,20 +23,17 @@ exports.getServiceById = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
-// Create a new service
 exports.createService = async (req, res) => {
   try {
-    const { title, author, isbn, price, stock } = req.body;
-    
-    // Basic validation
-    if (!title || !author || !isbn || !price) {
+    const { title, service , price, stock } = req.body;
+
+    if (!title || !service || !price || !stock) {
       return res.status(400).json({ message: 'All fields are required' });
     }
     
     const [result] = await db.query(
-      'INSERT INTO services (title, author, isbn, price, stock) VALUES (?, ?, ?, ?, ?)',
-      [title, author, isbn, price, stock || 0]
+      'INSERT INTO services (title,, isbn, price, stock) VALUES (?, ?, ?, ?, ?)',
+      [title, service, price, stock|| 0]
     );
     
     const [newService] = await db.query('SELECT * FROM services WHERE id = ?', [result.insertId]);
@@ -51,13 +45,11 @@ exports.createService = async (req, res) => {
   }
 };
 
-// Update a service
 exports.updateService = async (req, res) => {
   try {
-    const { title, author, isbn, price, stock } = req.body;
+    const { title, service, price, stock } = req.body;
     const serviceId = req.params.id;
-    
-    // Check if service exists
+   
     const [existingService] = await db.query('SELECT * FROM services WHERE id = ?', [serviceId]);
     
     if (existingService.length === 0) {
@@ -68,8 +60,7 @@ exports.updateService = async (req, res) => {
       'UPDATE services SET title = ?, author = ?, isbn = ?, price = ?, stock = ? WHERE id = ?',
       [
         title || existingService[0].title,
-        author || existingService[0].author,
-        isbn || existingService[0].isbn,
+        author || existingService[0].service,
         price || existingService[0].price,
         stock !== undefined ? stock : existingService[0].stock,
         serviceId
@@ -85,12 +76,10 @@ exports.updateService = async (req, res) => {
   }
 };
 
-// Delete a service
 exports.deleteService = async (req, res) => {
   try {
     const serviceId = req.params.id;
     
-    // Check if service exists
     const [existingService] = await db.query('SELECT * FROM services WHERE id = ?', [serviceId]);
     
     if (existingService.length === 0) {

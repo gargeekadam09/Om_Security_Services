@@ -1,7 +1,5 @@
-// src/services/customerService.js
-import { authHeader } from './authService';
 
-const API_URL = 'http://localhost:5000/api';
+import { authHeader } from './authService';
 
 export const getAllCustomers = async () => {
   try {

@@ -16,18 +16,12 @@ const SaleForm = ({ onSave }) => {
   const [message, setMessage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  // Helper function to safely format price
   const formatPrice = (price) => {
-    // Convert to number if it's a string
     const numPrice = typeof price === 'string' ? parseFloat(price) : price;
-    
-    // Check if it's a valid number
+
     if (isNaN(numPrice)) {
       return '0.00';
     }
-    
-    // Format with 2 decimal places
     return numPrice.toFixed(2);
   };
 
@@ -42,8 +36,7 @@ const SaleForm = ({ onSave }) => {
         
         setServices(servicesData);
         setCustomers(customersData);
-        
-        // Set default values if data is available
+       
         if (customersData.length > 0) {
           setFormData(prev => ({
             ...prev,
@@ -90,8 +83,6 @@ const SaleForm = ({ onSave }) => {
     if (!formData.quantity || formData.quantity <= 0) {
       newErrors.quantity = 'Quantity must be greater than 0';
     }
-    
-    // Check if selected service has enough stock
     if (formData.service_id && formData.quantity) {
       const selectedService = services.find(service => service.id === parseInt(formData.service_id));
       if (selectedService && selectedService.stock < formData.quantity) {
@@ -122,14 +113,10 @@ const SaleForm = ({ onSave }) => {
       
       await createSale(saleData);
       setMessage({ type: 'success', text: 'Sale recorded successfully!' });
-      
-      // Reset quantity after successful creation
       setFormData({
         ...formData,
         quantity: 1
       });
-      
-      // Notify parent component to refresh the list
       if (onSave) {
         onSave();
       }

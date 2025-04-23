@@ -37,18 +37,11 @@ const SaleList = ({ refreshTrigger }) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-
-  // Helper function to safely format price
   const formatPrice = (price) => {
-    // Convert to number if it's a string
     const numPrice = typeof price === 'string' ? parseFloat(price) : price;
-    
-    // Check if it's a valid number
     if (isNaN(numPrice)) {
       return '0.00';
     }
-    
-    // Format with 2 decimal places
     return numPrice.toFixed(2);
   };
 

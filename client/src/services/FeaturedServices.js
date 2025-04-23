@@ -20,7 +20,6 @@ const FeaturedServices = ({ onViewService }) => {
         setLoading(true);
         const data = await getAllServices();
         
-        // Get only first 5 services or fewer for featuring
         const featuredServices = data.slice(0, 5);
         setServices(featuredServices);
         setLoading(false);

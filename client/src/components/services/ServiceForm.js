@@ -17,7 +17,6 @@ const ServiceForm = ({ onServiceAdded }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Replace with your actual API endpoint
     axios.post('http://localhost:5000/api/services', formData)
       .then((response) => {
         alert('Service added successfully!');

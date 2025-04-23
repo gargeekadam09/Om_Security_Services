@@ -22,7 +22,7 @@ const CustomerForm = ({ customer, onSave }) => {
         address: customer.address || ''
       });
     } else {
-      // Reset form if no customer is selected
+  
       setFormData({
         name: '',
         email: '',
@@ -31,7 +31,6 @@ const CustomerForm = ({ customer, onSave }) => {
       });
     }
     
-    // Clear messages when customer changes
     setMessage(null);
     setErrors({});
   }, [customer]);
@@ -77,15 +76,15 @@ const CustomerForm = ({ customer, onSave }) => {
       };
       
       if (customer) {
-        // Update existing customer
+ 
         await updateCustomer(customer.id, customerData);
         setMessage({ type: 'success', text: 'Customer updated successfully!' });
       } else {
-        // Create new customer
+  
         await createCustomer(customerData);
         setMessage({ type: 'success', text: 'Customer created successfully!' });
         
-        // Reset form after successful creation
+  
         setFormData({
           name: '',
           email: '',
@@ -94,7 +93,7 @@ const CustomerForm = ({ customer, onSave }) => {
         });
       }
       
-      // Notify parent component to refresh the list
+
       if (onSave) {
         onSave();
       }

@@ -1,6 +1,5 @@
 const db = require('../config/db');
 
-// Get all customers
 exports.getAllCustomers = async (req, res) => {
   try {
     const [customers] = await db.query('SELECT * FROM customers');
@@ -11,7 +10,6 @@ exports.getAllCustomers = async (req, res) => {
   }
 };
 
-// Get a single customer by ID
 exports.getCustomerById = async (req, res) => {
   try {
     const [customer] = await db.query('SELECT * FROM customers WHERE id = ?', [req.params.id]);
@@ -27,12 +25,10 @@ exports.getCustomerById = async (req, res) => {
   }
 };
 
-// Create a new customer
 exports.createCustomer = async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
     
-    // Basic validation
     if (!name || !email) {
       return res.status(400).json({ message: 'Name and email are required' });
     }
@@ -51,13 +47,11 @@ exports.createCustomer = async (req, res) => {
   }
 };
 
-// Update a customer
 exports.updateCustomer = async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
     const customerId = req.params.id;
     
-    // Check if customer exists
     const [existingCustomer] = await db.query('SELECT * FROM customers WHERE id = ?', [customerId]);
     
     if (existingCustomer.length === 0) {
@@ -84,12 +78,10 @@ exports.updateCustomer = async (req, res) => {
   }
 };
 
-// Delete a customer
 exports.deleteCustomer = async (req, res) => {
   try {
     const customerId = req.params.id;
     
-    // Check if customer exists
     const [existingCustomer] = await db.query('SELECT * FROM customers WHERE id = ?', [customerId]);
     
     if (existingCustomer.length === 0) {

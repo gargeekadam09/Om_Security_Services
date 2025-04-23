@@ -11,7 +11,6 @@ const Navigation = ({ activeTab, setActiveTab, isAdmin }) => {
       </div>
       
       {isAdmin ? (
-        // Admin navigation options
         <>
           <div 
             className={`nav-tab ${activeTab === 'customers' ? 'active' : ''}`}
@@ -27,7 +26,6 @@ const Navigation = ({ activeTab, setActiveTab, isAdmin }) => {
           </div>
         </>
       ) : (
-        // Customer navigation options
         <div 
           className={`nav-tab ${activeTab === 'dashboard' ? 'active' : ''}`}
           onClick={() => setActiveTab('dashboard')}
