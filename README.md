@@ -101,7 +101,6 @@ The website features four major service categories:
 | Technology     | Description                                      |
 |----------------|--------------------------------------------------|
 | React          | Frontend framework                               |
-| TypeScript     | Ensures type safety                              |
 | Tailwind CSS   | Utility-first CSS framework for styling          |
 | npm            | Node package manager                             |
 | Git            | Version control system                           |
