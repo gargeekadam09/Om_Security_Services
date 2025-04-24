@@ -1,7 +1,5 @@
-// src/services/saleService.js
-import { authHeader } from './authService';
 
-const API_URL = 'http://localhost:5000/api';
+import { authHeader } from './authService';
 
 export const getAllSales = async () => {
   try {

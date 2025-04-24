@@ -25,14 +25,14 @@ exports.getServiceById = async (req, res) => {
 };
 exports.createService = async (req, res) => {
   try {
-    const { title, service , price, stock } = req.body;
+    const { name, service ,price , stock} = req.body;
 
-    if (!title || !service || !price || !stock) {
+    if (!name || !service || !price || !stock) {
       return res.status(400).json({ message: 'All fields are required' });
     }
     
     const [result] = await db.query(
-      'INSERT INTO services (title,, isbn, price, stock) VALUES (?, ?, ?, ?, ?)',
+      'INSERT INTO services (name, service, price, stock) VALUES (?, ?, ?, ?, ?)',
       [title, service, price, stock|| 0]
     );
     
@@ -57,10 +57,10 @@ exports.updateService = async (req, res) => {
     }
     
     await db.query(
-      'UPDATE services SET title = ?, author = ?, isbn = ?, price = ?, stock = ? WHERE id = ?',
+      'UPDATE services SET name = ?, service = ?, price = ?, stock = ? WHERE id = ?',
       [
-        title || existingService[0].title,
-        author || existingService[0].service,
+        name || existingService[0].name,
+        service || existingService[0].service,
         price || existingService[0].price,
         stock !== undefined ? stock : existingService[0].stock,
         serviceId

@@ -12,18 +12,16 @@ import { createService, updateService } from '../../services/serviceService';
         : service.price;
         
       setFormData({
-        title: service.title,
-        author: service.author,
-        isbn: service.isbn,
+        name: service.name,
+        service: service.service,
         price: priceValue,
         stock: service.stock
       });
     } else {
 
       setFormData({
-        title: '',
-        author: '',
-        isbn: '',
+        name: '',
+        service: '',
         price: '',
         stock: ''
       });
@@ -45,15 +43,15 @@ import { createService, updateService } from '../../services/serviceService';
     const newErrors = {};
     
     if (!formData.title.trim()) {
-      newErrors.title = 'Title is required';
+      newErrors.title = 'Name is required';
     }
     
     if (!formData.author.trim()) {
-      newErrors.author = 'Author is required';
+      newErrors.author = 'Service is required';
     }
     
     if (!formData.isbn.trim()) {
-      newErrors.isbn = 'ISBN is required';
+      newErrors.isbn = 'Price is required';
     }
     
     if (!formData.price) {
@@ -96,9 +94,8 @@ import { createService, updateService } from '../../services/serviceService';
         await createService(serviceData);
         setMessage({ type: 'success', text: 'Service created successfully!' });
         setFormData({
-          title: '',
-          author: '',
-          isbn: '',
+          name: '',
+          service: '',
           price: '',
           stock: ''
         });
@@ -126,41 +123,30 @@ import { createService, updateService } from '../../services/serviceService';
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
-            id="title"
-            name="title"
-            value={formData.title}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
           />
-          {errors.title && <div className="error">{errors.title}</div>}
+          {errors.name && <div className="error">{errors.name}</div>}
         </div>
         
         <div className="form-group">
-          <label htmlFor="author">Author:</label>
+          <label htmlFor="service">Service:</label>
           <input
             type="text"
-            id="author"
-            name="author"
+            id="service"
+            name="service"
             value={formData.author}
             onChange={handleChange}
           />
-          {errors.author && <div className="error">{errors.author}</div>}
+          {errors.service && <div className="error">{errors.service}</div>}
         </div>
         
-        <div className="form-group">
-          <label htmlFor="isbn">ISBN:</label>
-          <input
-            type="text"
-            id="isbn"
-            name="isbn"
-            value={formData.isbn}
-            onChange={handleChange}
-          />
-          {errors.isbn && <div className="error">{errors.isbn}</div>}
-        </div>
-        
+
         <div className="form-group">
           <label htmlFor="price">Price ($):</label>
           <input
