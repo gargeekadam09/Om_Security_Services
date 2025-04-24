@@ -79,7 +79,7 @@ The website features four major service categories:
 
 ### 5. Technological Workflow
 - **Frontend**: React.js for SPA functionality  
-- **Styling**: Tailwind CSS  
+- **Styling**:  CSS  
 - **Backend**: Node.js or Firebase integration (planned/optional)  
 - **Build Tools**: React Scripts, potentially Next.js  
 - **Deployment**: Vercel / Netlify
@@ -101,7 +101,7 @@ The website features four major service categories:
 | Technology     | Description                                      |
 |----------------|--------------------------------------------------|
 | React          | Frontend framework                               |
-| Tailwind CSS   | Utility-first CSS framework for styling          |
+| CSS            | CSS for styling          |
 | npm            | Node package manager                             |
 | Git            | Version control system                           |
 | SQL (AWS RDS)  | Relational database hosted on AWS RDS            |
